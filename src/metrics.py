@@ -57,7 +57,7 @@ def sorted_revenue_by_category(data, list_of_categories):
     return sorted_data
 
 # Nyckeltal
-total_revenue_sold = total_revenue(io.data) #ok
+total_revenue_sold = round(total_revenue(io.data), 2)
 total_units = total_units_sold(io.data) #ok
 aov = average_order_value(io.data) #ok
 revenue_category = sorted_revenue_by_category(io.data, list_of_categories) #ok
