@@ -1,5 +1,5 @@
 import csv
-import io_utils as io  
+from src import io_utils as io  
 
 
 def unique_list_of_category(data, category):
@@ -70,3 +70,14 @@ if __name__ == "__main__":
     print(total_units_sold(io.data))
     print("Average order value:")
     print(avrage_order_value(io.data))
+    import pandas as pd
+
+def get_monthly_sales_analysis(df):
+    """
+
+    """
+    df['date'] = pd.to_datetime(df['date'])
+    df['revenue'] = pd.to_numeric(df['revenue'])
+    
+    monthly_sales = df.groupby(df['date'].dt.to_period('M'))['revenue'].sum()
+    return monthly_sales
