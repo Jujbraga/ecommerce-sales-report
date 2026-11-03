@@ -81,3 +81,41 @@ def get_monthly_sales_analysis(df):
     
     monthly_sales = df.groupby(df['date'].dt.to_period('M'))['revenue'].sum()
     return monthly_sales
+def calculate_revenue_by_city(sales_data):
+    city_index = 2
+    revenue_index = 6
+    city_revenue = {}
+    
+    for row in sales_data[1:]:
+        city = row[city_index]
+        revenue = float(row[revenue_index])
+        if city in city_revenue:
+            city_revenue[city] += revenue
+        else:
+            city_revenue[city] = revenue
+            
+    return city_revenue
+
+def calculate_revenue_by_category(sales_data):
+    category_index = 3
+    revenue_index = 6
+    category_revenue = {}
+    
+    for row in sales_data[1:]:
+        category = row[category_index]
+        revenue = float(row[revenue_index])
+        if category in category_revenue:
+            category_revenue[category] += revenue
+        else:
+            category_revenue[category] = revenue
+            
+    return category_revenue
+
+def calculate_total_revenue(sales_data):
+    revenue_index = 6
+    total_revenue = 0
+    
+    for row in sales_data[1:]:
+        total_revenue += float(row[revenue_index])
+        
+    return total_revenue
