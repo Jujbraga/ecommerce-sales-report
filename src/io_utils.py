@@ -1,7 +1,10 @@
 
-import csv
+from pathlib import Path
+import pandas as pd
 
-#https://docs.python.org/3/library/csv.html
-with open("ecommerce-sales-report\\data\\ecommerce_sales.csv", newline="", encoding="utf-8" ) as f:
-    reader = csv.reader(f)
-    data = list(reader)
+# källhänvisning: https://stackoverflow.com/questions/78466287/
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DATA_PATH = PROJECT_ROOT / "data" / "ecommerce_sales.csv"
+
+df = pd.read_csv(DATA_PATH)
+data = df.values.tolist()
