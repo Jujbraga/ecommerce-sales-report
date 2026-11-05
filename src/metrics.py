@@ -3,9 +3,27 @@ import sys, os
 
 sys.path.append(os.path.abspath(".."))
 
-
-
 import src.io_utils as io  
+
+import pandas as pd
+
+def by_category(df):
+    return (
+        df.groupby("category", dropna=False)["revenue"].sum()
+        .sort_values(ascending=False)
+        .reset_index()
+    )
+
+def show_avg(df):
+    avg =df.agg(
+        mean = ("revenue", "mean"),
+        median = ("revenue", "median"),
+        std = ("revenue", "std"),
+        max = ("revenue", "max"),
+        min = ("revenue", "min"),
+    ).round(2)
+    return avg
+
 
 
 def unique_list_of_category(data, category):
