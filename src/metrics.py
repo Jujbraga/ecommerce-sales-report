@@ -1,4 +1,3 @@
-import csv
 import sys, os
 
 sys.path.append(os.path.abspath(".."))
@@ -24,7 +23,9 @@ def show_avg(df):
     ).round(2)
     return avg
 
-
+def top3(df):
+    cat = df.groupby("category")["revenue"].sum().sort_values(ascending=False).head(3)
+    return cat
 
 def unique_list_of_category(data, category):
     list_of_category = list(set(row[category] for row in data[1:]))
