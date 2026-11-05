@@ -15,8 +15,6 @@ def plot_dispersion(df):
     plt.tight_layout()
     
 def plot_monthly_sales(monthly_sales):
-    """
-    """
     plt.figure(figsize=(9, 4))
     monthly_sales.plot(kind='line', marker='o', color='#2b5c8f', linewidth=2)
     plt.title('Monthly Sales Trend (När säljer vi?)')
@@ -24,3 +22,15 @@ def plot_monthly_sales(monthly_sales):
     plt.ylabel('Total Revenue (SEK)')
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.show()
+
+def plot_by_category(df):
+    bar_colors = ['tab:cyan', 'tab:green', 'tab:blue', 'tab:purple', 'tab:orange', 'tab:red']
+    fig, ax = plt.subplots(figsize=(9, 4))
+    ax.bar(df["category"], df["revenue"], color=bar_colors)
+    ax.set_title("Intäkter per kategorier")
+    ax.set_ylabel("Intäkter SEK")
+    ax.grid(True, linestyle='dashed', axis="y")
+    ax.ticklabel_format(style='plain', axis='y')
+    plt.tight_layout()
+    plt.show()
+

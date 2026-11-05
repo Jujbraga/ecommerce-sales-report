@@ -79,3 +79,10 @@ def get_monthly_sales_analysis(df):
     
     monthly_sales = df.groupby(df['date'].dt.to_period('M'))['revenue'].sum()
     return monthly_sales
+
+def by_category(df: pd.DataFrame) -> pd.DataFrame:
+    return (
+        df.groupby("category", dropna=False)["revenue"].sum()
+        .sort_values(ascending=False)
+        .reset_index()
+    )
