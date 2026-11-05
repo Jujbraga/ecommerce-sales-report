@@ -5,4 +5,5 @@ import pandas as pd
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = PROJECT_ROOT / "data" / "ecommerce_sales.csv"
 
-df = pd.read_csv(DATA_PATH)
+df = pd.read_csv(DATA_PATH, parse_dates=["date"])
+data = df.values.tolist()

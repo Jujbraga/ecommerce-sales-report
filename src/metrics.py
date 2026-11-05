@@ -57,6 +57,21 @@ def sorted_revenue_for_products(data, list_of_products):
     return sorted_data
 
 
+def calculate_revenue_by_category(sales_data):
+    category_index = 3
+    revenue_index = 6
+    category_revenue = {}
+    
+    for row in sales_data[1:]:
+        category = row[category_index]
+        revenue = float(row[revenue_index])
+        if category in category_revenue:
+            category_revenue[category] += revenue
+        else:
+            category_revenue[category] = revenue
+            
+    return category_revenue
+
 if __name__ == "__main__":
     print("Revenue for products:")
     print(revenue_for_products(io.data, list_of_products))
